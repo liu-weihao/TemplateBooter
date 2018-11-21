@@ -1,0 +1,43 @@
+server:
+  port: 8000
+  tomcat:
+      uri-encoding: UTF-8
+spring:
+  application:
+    name: yoogurt-licences
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    url: jdbc:mysql://rm-bp1cj68xrmcrqk78c.mysql.rds.aliyuncs.com:3306/taxi-licences?useUnicode=true&characterEncoding=UTF8&useSSL=false
+    username: yoogurt
+    password: taxi123!@#
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    schema: classpath:taxi-licences.sql
+  redis:
+    host: 120.55.42.113
+    port: 6370
+    password: taxi0
+    timeout: 1800000
+    database: 1
+logging:
+  path: ./log
+#pagehelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+# mybatis配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.yoogurt.taxi.licences.dal.beans
+---
+spring:
+  profiles:
+    active: dev
